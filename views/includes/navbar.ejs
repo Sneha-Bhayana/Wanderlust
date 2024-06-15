@@ -1,0 +1,69 @@
+<style>
+  .search-btn{
+    background-color:#fe424d;
+    color:#fff;
+    border-radius: 25px;
+    padding: 0 1rem 0 1rem;
+  }
+  .search-btn:hover{
+    background-color:#fe424d;
+    color:#fff;
+  }
+  .search-btn i{
+    display: inline;
+    margin-right: 0.5rem;
+  }
+  .search-input{
+    border-radius: 25px;
+    padding: 0.5rem 3rem 0.5rem 3rem;
+    font-size: 0.8rem;
+  }
+</style>
+
+<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/listings"><i class="fa-regular fa-compass"></i></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link" href="/listings">Explore</a>
+        </div>
+        <div class="navbar-nav ms-auto">
+          <form class="d-flex" role="search">
+              <select class="form-select form-control search-input" name ="listing[category]"aria-label="Default select example" required>
+                  <option selected>Search</option>
+                  <a href="/trending"><option value="Trending">Trending</option></a>
+                  <a href="/rooms"><option value="Luxury Rooms">Luxury Rooms</option></a>
+                  <a href="/cities"><option value="Iconic Cities">Iconic Cities</option></a>
+                  <a href="/mountains"><option value="Mountains">Mountains</option></a>
+                  <a href="/beach"><option value="Beach">Beach</option></a>
+                  <a href="/pools"><option value="Amazing Pools">Amazing Pools</option></a>
+                  <a href="/camping"><option value="Camping">Camping</option></a>
+                  <a href="/farms"><option value="Farms">Farms</option></a>
+                  <a href="/arctic"><option value="Arctic">Arctic</option></a>
+                  <a href="/domes"><option value="Domes">Domes</option></a>
+                  <a href="/boats"><option value="Boats">Boats</option></a>
+                </select>
+            <button class="btn search-btn" type="submit" ><i class="fa-solid fa-magnifying-glass"></i>Search</button>
+          </form>
+        </div>
+        
+        <div class="navbar-nav ms-auto">
+          <a class="nav-link" href="/listings/new">Airbnb your home</a>
+          <%if(!currUser){%>
+            <a class="nav-link active" aria-current="page" href=signup><b>Signup</b></a>
+            <a class="nav-link" href="/login"><b>Login</b></a>
+          <%}%>
+          <%if(currUser){%> 
+            <a class="nav-link" href="/logout"><b>Log out</b></a>
+          <%}%>
+          
+          
+        </div>
+      </div>
+    </div>
+  </nav>
+
