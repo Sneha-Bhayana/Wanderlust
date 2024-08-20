@@ -3,9 +3,9 @@ const multer = require("multer");
 const {storage} = require("../cloudConfig.js");
 const upload = multer({storage});
 
-const mbxgeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
-const mapToken = process.env.MAP_TOKEN;
-const geocodingClient = mbxgeocoding({ accessToken: mapToken });
+// const mbxgeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
+// const mapToken = process.env.MAP_TOKEN;
+// const geocodingClient = mbxgeocoding({ accessToken: mapToken });
  
 module.exports.index = (async(req,res)=>{
     const allListings = await Listing.find({});
@@ -41,15 +41,15 @@ module.exports.createListing = async(req,res)=>{
     let url = req.file.path;
     let filename = req.file.filename;
     const newlisting = new Listing(req.body.listing);
-    let response = await geocodingClient.forwardGeocode({
-        query: newlisting.location || "New Delhi",
-        limit: 1
-      })
-        .send();
-    console.log(response.body.features[0].geometry);
+    // let response = await geocodingClient.forwardGeocode({
+    //     query: newlisting.location || "New Delhi",
+    //     limit: 1
+    //   })
+    //     .send();
+    // console.log(response.body.features[0].geometry);
     newlisting.owner = req.user._id;
     newlisting.image = {url , filename};
-    newlisting.geometry = response.body.features[0].geometry;
+    // newlisting.geometry = response.body.features[0].geometry;
     await newlisting.save();
     req.flash("success","New Listing Created!");
     res.redirect("/listings");
