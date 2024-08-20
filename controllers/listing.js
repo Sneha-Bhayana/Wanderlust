@@ -19,11 +19,11 @@ module.exports.index = (async(req,res)=>{
     //     listing.geometry = results.body.features[0].geometry;
     //     await Listing.updateMany({geometry:listing.geometry});
     // }
-    res.render("/listings/index.ejs",{allListings});
+    res.render("./listings/index.ejs",{allListings});
 })
 
 module.exports.renderNewForm = (req,res)=>{
-    res.render("/listings/new.ejs");
+    res.render("./listings/new.ejs");
 }
 
 module.exports.showListing = async(req,res)=>{
@@ -33,7 +33,7 @@ module.exports.showListing = async(req,res)=>{
         req.flash("error","Listing you requested for does not exist!")
         res.redirect("/listings");
     }
-    res.render("/listings/show.ejs",{listing});
+    res.render("./listings/show.ejs",{listing});
 }
 
 module.exports.createListing = async(req,res)=>{
@@ -66,7 +66,7 @@ module.exports.renderEditForm = async(req,res)=>{
 
     let originalImageUrl = listing.image.url;
     originalImageUrl = originalImageUrl.replace("w=800","w=250&h=250");
-    res.render("/listings/edit.ejs",{listing,originalImageUrl});
+    res.render("./listings/edit.ejs",{listing,originalImageUrl});
 }
 
 module.exports.updateListing = async(req,res)=>{
